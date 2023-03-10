@@ -69,9 +69,8 @@ const map = new Map({
 /**
  * Add a click handler to the map to render the popup.
  */
-map.on('singleclick', function (evt) {
-  console.log(evt.pixel);
-  const coordinate = evt.coordinate;
+map.on('singleclick', function (e) {
+  const coordinate = e.coordinate;
   const hdms = toStringHDMS(toLonLat(coordinate));
 
   content.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
