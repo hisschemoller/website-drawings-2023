@@ -9,7 +9,9 @@
     "dev": "node server.mjs",
     "build": "npx rollup --config"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ol": "^7.3.0"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",

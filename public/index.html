@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<!-- <link rel="stylesheet" href="css/style.css"> -->
+		<link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <h1>Drawings 2023</h1>
     <p>door Wouter Hisschemöller</p>
-    <p>Een HTML pagina.</p>
+    <div class="container">
+      <div id="map" class="map"></div>
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
+    </div>
     <script src="bundle.js" type="module"></script>
   </body>
-</html>
+</html> 
