@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "Website drawings Wordpress plugin for hisschemoller.com/drawings",
   "author": "Wouter Hisschemoller",
-  "license": "mit",
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "scripts": {
+    "dev": "node server.mjs",
     "build": "npx rollup --config"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
+    "express": "^4.18.2",
     "rollup": "^3.17.3",
     "rollup-plugin-replace": "^2.2.0",
     "tslib": "^2.5.0",
