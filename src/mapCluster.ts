@@ -28,7 +28,12 @@ export const getSource = () => source;
 export function createMapClusters() {
   const drawings = getDrawings();
 
-  const features = drawings.map((d) => new Feature(new Point(fromLonLat([d.longitude, d.latitude]))));
+  const features = drawings.map((d) => new Feature({
+    description: d.description,
+    geometry: new Point(fromLonLat([d.longitude, d.latitude])),
+    id: d.id,
+    srcSmall: d.image_file_small,
+  }));
   
   source = new VectorSource({
     features: features,

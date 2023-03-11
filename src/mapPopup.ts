@@ -13,7 +13,7 @@ const closer = document.getElementById('popup-closer') as HTMLElement;
  * @return {boolean} Don't follow the href.
  */
 closer.addEventListener('click', () => {
-  overlay.setPosition(undefined);
+  closePopup();
   closer.blur();
   return false;
 });
@@ -32,7 +32,16 @@ const overlay = new Overlay({
 
 export const getOverlay = () => overlay;
 
-export function showPopup(coordinate: Coordinate, hdms: string) {
-  content.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
+export function closePopup() {
+  overlay.setPosition(undefined);
+}
+
+export function showPopup(
+  coordinate: Coordinate,
+  description: string,
+  id: string,
+  srcSmall: string,
+) {
+  content.innerHTML = `<p>${description}<br />${id}<br />${srcSmall}</p>`;
   overlay.setPosition(coordinate);
 }
