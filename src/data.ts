@@ -1,5 +1,4 @@
-const env = 'dev';
-let drawings: {
+type Drawing = {
   id: string;
   image_file_large: string;
   width_large: string;
@@ -7,13 +6,18 @@ let drawings: {
   image_file_small: string;
   width_small: string;
   height_small: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   title: string;
   description: string;
   date: string;
-}[];
+};
 
+const env = 'dev';
+
+let drawings: Drawing[];
+
+export const getDrawings = () => drawings;
 
 export async function loadDrawings() {
   try {
@@ -22,7 +26,11 @@ export async function loadDrawings() {
       ? ' json/drawings.json'
       : '/wordpress/wp-content/plugins/drawings-app/dist/json/drawings.json');
     const json = await response.json();
-    drawings = json;
+    drawings = json.map((item: Drawing) => ({
+      ...item,
+      latitude: parseFloat(item.latitude.toString()),
+      longitude: parseFloat(item.longitude.toString()),
+    }));
   } catch (err) {
     console.log('loadDrawings error:', err);
   }

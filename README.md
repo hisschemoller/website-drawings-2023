@@ -2,4 +2,7 @@
 
 The Website Drawings app rewritten without Vue to avoid problems.
 
-https://openlayers.org/en/latest/examples/popup.html
+* Popup
+  * https://openlayers.org/en/latest/examples/popup.html
+* Clustered Features
+  * https://openlayers.org/en/latest/examples/cluster.html  

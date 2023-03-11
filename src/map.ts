@@ -1,12 +1,11 @@
 import Map from 'ol/Map.js';
 import Overlay from 'ol/Overlay.js';
 import TileLayer from 'ol/layer/Tile.js';
-import { Tile, Vector as VectorLayer } from 'ol/layer';
-import { Cluster, OSM, Vector as VectorSource } from 'ol/source';
+import { OSM } from 'ol/source';
 import View from 'ol/View.js';
-import XYZ from 'ol/source/XYZ.js';
 import { toLonLat } from 'ol/proj.js';
 import { toStringHDMS } from 'ol/coordinate.js';
+import { getClusters, getSource } from './mapCluster';
 
 /**
  * Elements that make up the popup.
@@ -37,23 +36,11 @@ closer.onclick = function () {
   return false;
 };
 
-// const key = 'Get your own API key at https://www.maptiler.com/cloud/';
-// const attributions =
-//   '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> ' +
-//   '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>';
-
 /**
  * Create the map.
  */
 const map = new Map({
   layers: [
-    // new TileLayer({
-    //   source: new XYZ({
-    //     attributions: attributions,
-    //     url: 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=' + key,
-    //     tileSize: 512,
-    //   }),
-    // }),
     new TileLayer({
       source: new OSM(),
     })
@@ -76,3 +63,8 @@ map.on('singleclick', function (e) {
   content.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
   overlay.setPosition(coordinate);
 });
+
+export function addClusters() {
+  map.addLayer(getClusters());
+  map.getView().fit(getSource().getExtent());
+}
