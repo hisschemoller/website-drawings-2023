@@ -42,6 +42,11 @@ export function showPopup(
   id: string,
   srcSmall: string,
 ) {
-  content.innerHTML = `<p>${description}<br />${id}<br />${srcSmall}</p>`;
+  content.innerHTML = `<div class="popup-content">
+      <div class="popup-image">
+        <img src="images/drawings/${srcSmall}" alt="${description}" />
+      </div>
+      <span>${description}<br /></span>
+    </div>`;
   overlay.setPosition(coordinate);
 }

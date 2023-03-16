@@ -11,12 +11,12 @@
   position: absolute;
   background-color: white;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  padding: 15px;
+  padding: 24px 16px 8px 16px;
   border-radius: 10px;
   border: 1px solid #cccccc;
   bottom: 12px;
   left: -50px;
-  min-width: 280px;
+  min-width: 200px;
 }
 .ol-popup:after, .ol-popup:before {
   top: 100%;
@@ -40,11 +40,29 @@
   margin-left: -11px;
 }
 .ol-popup-closer {
-  text-decoration: none;
+  color: #999;
   position: absolute;
-  top: 2px;
   right: 8px;
+  text-decoration: none;
+  top: 5px;
 }
 .ol-popup-closer:after {
   content: "✖";
+}
+
+.popup-image {
+  align-items: center;
+  /* background-color: #aaa; */
+  border: 2px solid #ddd;
+  display: flex;
+  height: 250px;
+  justify-content: center;
+  margin-bottom: 4px;
+  width: 250px;
+}
+.popup-image img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
 }
