@@ -5,9 +5,10 @@ import View from 'ol/View.js';
 import { getClusters, getSource } from './mapCluster';
 import { closePopup, getOverlay, showPopup } from './mapPopup';
 import { Pixel } from 'ol/pixel';
-import { createEmpty, extend } from 'ol/extent';
+import { containsXY, createEmpty, extend } from 'ol/extent';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
+import { updateVisibleIds } from './data';
 
 /**
  * Create the map.
@@ -23,6 +24,10 @@ const map = new Map({
     center: [0, 0],
     zoom: 2,
   }),
+});
+
+map.on('moveend', () => {
+  visibleMarkers();
 });
 
 /**
@@ -52,6 +57,35 @@ map.on('singleclick', function (e) {
   }
 });
 
+export function addClusterLayer() {
+  map.addLayer(getClusters());
+  map.getView().fit(getSource().getExtent());
+}
+
+export function addPopupOverlay() {
+  map.addOverlay(getOverlay());
+}
+
+function visibleMarkers() {
+  const cluster = getClusters().getSource();
+  if (cluster) {
+    const mapExtent = map.getView().calculateExtent(map.getSize());
+    const clusterFeatures = cluster.getFeatures();
+    const visibleIds: string[] = [];
+    clusterFeatures.forEach((clusterFeature) => {
+      const coordinates = clusterFeature.get('geometry').getCoordinates();
+      const isOnMap = containsXY(mapExtent, coordinates[0], coordinates[1]);
+      if (isOnMap) {
+        const markerFeatures = clusterFeature.get('features');
+        markerFeatures.forEach((markerFeature: Feature) => {
+          visibleIds.push(markerFeature.get('id'));
+        });
+      }
+    });
+    updateVisibleIds(visibleIds);
+  }
+}
+
 function zoomToCluster(pixel: Pixel) {
   const feature = map.forEachFeatureAtPixel(pixel, (feat) => feat);
   if (feature) {
@@ -68,12 +102,3 @@ function zoomToCluster(pixel: Pixel) {
     }
   }
 };
-
-export function addClusterLayer() {
-  map.addLayer(getClusters());
-  map.getView().fit(getSource().getExtent());
-}
-
-export function addPopupOverlay() {
-  map.addOverlay(getOverlay());
-}

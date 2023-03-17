@@ -17,6 +17,8 @@ const env = 'dev';
 
 let drawings: Drawing[];
 
+let visibleIds: string[];
+
 export const getDrawings = () => drawings;
 
 export async function loadDrawings() {
@@ -35,3 +37,8 @@ export async function loadDrawings() {
     console.log('loadDrawings error:', err);
   }
 }
+
+export const updateVisibleIds = (ids: string[]) => {
+  visibleIds = ids;
+  console.log(visibleIds.length);
+};
