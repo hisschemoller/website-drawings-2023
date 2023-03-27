@@ -1,3 +1,4 @@
+import { setupCarousel } from './carousel';
 import { loadDrawings } from './data';
 import './map';
 import { addClusterLayer, addPopupOverlay } from './map';
@@ -10,4 +11,5 @@ console.log('Hello world!');
   createMapClusters();
   addClusterLayer();
   addPopupOverlay();
+  setupCarousel();
 })();

@@ -33,6 +33,7 @@ export function createMapClusters() {
     geometry: new Point(fromLonLat([d.longitude, d.latitude])),
     id: d.id,
     srcSmall: d.image_file_small,
+    year: d.year,
   }));
   
   source = new VectorSource({

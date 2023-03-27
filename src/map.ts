@@ -46,6 +46,7 @@ map.on('singleclick', function (e) {
         markerFeatures[0].get('description'),
         markerFeatures[0].get('id'),
         markerFeatures[0].get('srcSmall'),
+        markerFeatures[0].get('year'),
       );
     } else if (markerFeatures.length > 1) {
       zoomToCluster(pixel);
