@@ -1,4 +1,4 @@
-type Drawing = {
+export type Drawing = {
   id: string;
   image_file_large: string;
   width_large: string;
