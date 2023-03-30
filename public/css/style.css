@@ -55,9 +55,11 @@
   content: "✕";
 }
 
+.popup-content {
+  cursor: pointer;
+}
 .popup-image {
   align-items: center;
-  /* background-color: #aaa; */
   border: 2px solid #ddd;
   display: flex;
   height: 250px;
@@ -74,7 +76,7 @@
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
+  display: none;
   height: 100vh;
   left: 0;
   overflow: hidden;
@@ -83,12 +85,32 @@
   width: 100vw;
   z-index: 10;
 }
+.overlay.show {
+  display: flex;
+}
+.overlay-close {
+  background-color: #f00;
+  cursor: pointer;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  z-index: 1;
+}
 .overlay .splide {
   width: 100%;
 }
-.overlay-box {
+/* .overlay-box {
   background-color: #111;
   margin: 0 auto;
-  /* max-height: 800px;
-  max-width: 800px; */
+  max-height: 800px;
+  max-width: 800px;
+} */
+
+.splide__slide {
+  border: 1px solid #f00;
+  color: #fff;
+  display: flex;
+  padding: 30px;
 }

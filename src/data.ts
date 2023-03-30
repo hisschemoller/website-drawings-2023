@@ -15,8 +15,6 @@ export type Drawing = {
   year: string;
 };
 
-// const PAGE_SIZE = 30;
-
 const ENV = 'dev';
 
 let drawings: Drawing[];
@@ -24,13 +22,6 @@ let drawings: Drawing[];
 let visibleIndices: number[];
 
 export const getDrawings = () => drawings;
-
-// export const getNumPages = () => Math.ceil(visibleIndices.length / PAGE_SIZE);
-
-// export const getPage = () => {
-//   const pageOfIDs = visibleIds.slice(pageIndex * PAGE_SIZE, (pageIndex + 1) * PAGE_SIZE);
-//   return pageOfIDs.map((id: string) => drawings.find((drawing: Drawing) => drawing.id === id))
-// };
 
 export async function loadDrawings() {
   try {
@@ -46,15 +37,11 @@ export async function loadDrawings() {
       longitude: parseFloat(item.longitude.toString()),
       year: item.date.substring(0, 4),
     }));
-    // setPageIndex(0);
   } catch (err) {
     console.log('loadDrawings error:', err);
   }
 }
 
-// export const setPageIndex = (index: number) => pageIndex = index;
-
 export const updateVisibleIndices = (indices: number[]) => {
   visibleIndices = indices;
-  console.log(visibleIndices.length);
 };

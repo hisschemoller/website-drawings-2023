@@ -1,5 +1,7 @@
 import { Overlay } from 'ol';
 import { Coordinate } from 'ol/coordinate';
+import { goToSlide } from './carousel';
+import { showOverlay } from './overlay';
 
 /**
  * Elements that make up the popup.
@@ -16,6 +18,14 @@ closer.addEventListener('click', () => {
   closePopup();
   closer.blur();
   return false;
+});
+
+content.addEventListener('click', () => {
+  const el = content.querySelector('.popup-content') as HTMLElement;
+  if (el.dataset.index) {
+    showOverlay();
+    goToSlide(parseInt(el.dataset.index));
+  }
 });
 
 /**
@@ -43,7 +53,7 @@ export function showPopup(
   srcSmall: string,
   year: string,
 ) {
-  content.innerHTML = `<div class="popup-content">
+  content.innerHTML = `<div class="popup-content" data-index="${index}">
       <div class="popup-image">
         <img src="images/drawings/${srcSmall}" alt="${description}" />
       </div>

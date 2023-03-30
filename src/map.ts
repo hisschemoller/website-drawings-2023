@@ -44,7 +44,7 @@ map.on('singleclick', function (e) {
       showPopup(
         coordinate,
         markerFeatures[0].get('description'),
-        markerFeatures[0].get('id'),
+        markerFeatures[0].get('index'),
         markerFeatures[0].get('srcSmall'),
         markerFeatures[0].get('year'),
       );
