@@ -3,6 +3,7 @@ import { loadDrawings } from './data';
 import './map';
 import { addClusterLayer, addPopupOverlay } from './map';
 import { createMapClusters } from './mapCluster';
+import { setupOverlay } from './overlay';
 
 console.log('Hello world!');
 
@@ -12,4 +13,5 @@ console.log('Hello world!');
   addClusterLayer();
   addPopupOverlay();
   setupCarousel();
+  setupOverlay();
 })();
