@@ -8,7 +8,7 @@ import { Pixel } from 'ol/pixel';
 import { containsXY, createEmpty, extend } from 'ol/extent';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
-import { updateVisibleIds } from './data';
+import { updateVisibleIndices} from './data';
 
 /**
  * Create the map.
@@ -72,18 +72,18 @@ function visibleMarkers() {
   if (cluster) {
     const mapExtent = map.getView().calculateExtent(map.getSize());
     const clusterFeatures = cluster.getFeatures();
-    const visibleIds: string[] = [];
+    const visibleIndices: number[] = [];
     clusterFeatures.forEach((clusterFeature) => {
       const coordinates = clusterFeature.get('geometry').getCoordinates();
       const isOnMap = containsXY(mapExtent, coordinates[0], coordinates[1]);
       if (isOnMap) {
         const markerFeatures = clusterFeature.get('features');
         markerFeatures.forEach((markerFeature: Feature) => {
-          visibleIds.push(markerFeature.get('id'));
+          visibleIndices.push(markerFeature.get('index'));
         });
       }
     });
-    updateVisibleIds(visibleIds);
+    updateVisibleIndices(visibleIndices);
   }
 }
 

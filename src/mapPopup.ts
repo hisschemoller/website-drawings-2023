@@ -39,7 +39,7 @@ export function closePopup() {
 export function showPopup(
   coordinate: Coordinate,
   description: string,
-  id: string,
+  index: number,
   srcSmall: string,
   year: string,
 ) {

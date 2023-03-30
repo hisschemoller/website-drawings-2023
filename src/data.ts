@@ -1,6 +1,7 @@
 export type Drawing = {
   id: string;
   image_file_large: string;
+  index: number;
   width_large: string;
   height_large: string;
   image_file_small: string;
@@ -14,24 +15,22 @@ export type Drawing = {
   year: string;
 };
 
-const PAGE_SIZE = 30;
+// const PAGE_SIZE = 30;
 
 const ENV = 'dev';
 
 let drawings: Drawing[];
 
-let pageIndex = 0;
-
-let visibleIds: string[];
+let visibleIndices: number[];
 
 export const getDrawings = () => drawings;
 
-export const getNumPages = () => Math.ceil(visibleIds.length / PAGE_SIZE);
+// export const getNumPages = () => Math.ceil(visibleIndices.length / PAGE_SIZE);
 
-export const getPage = () => {
-  const pageOfIDs = visibleIds.slice(pageIndex * PAGE_SIZE, (pageIndex + 1) * PAGE_SIZE);
-  return pageOfIDs.map((id: string) => drawings.find((drawing: Drawing) => drawing.id === id))
-};
+// export const getPage = () => {
+//   const pageOfIDs = visibleIds.slice(pageIndex * PAGE_SIZE, (pageIndex + 1) * PAGE_SIZE);
+//   return pageOfIDs.map((id: string) => drawings.find((drawing: Drawing) => drawing.id === id))
+// };
 
 export async function loadDrawings() {
   try {
@@ -39,23 +38,23 @@ export async function loadDrawings() {
     const response = await fetch(ENV === 'dev'
       ? ' json/drawings.json'
       : '/wordpress/wp-content/plugins/drawings-app/dist/json/drawings.json');
-    const json = await response.json();
-    drawings = json.map((item: Drawing) => ({
+    const json = await response.json() as any[];
+    drawings = json.map((item: Drawing, index: number) => ({
       ...item,
+      index,
       latitude: parseFloat(item.latitude.toString()),
       longitude: parseFloat(item.longitude.toString()),
       year: item.date.substring(0, 4),
     }));
-    setPageIndex(0);
+    // setPageIndex(0);
   } catch (err) {
     console.log('loadDrawings error:', err);
   }
 }
 
-export const setPageIndex = (index: number) => pageIndex = index;
+// export const setPageIndex = (index: number) => pageIndex = index;
 
-export const updateVisibleIds = (ids: string[]) => {
-  visibleIds = ids;
-  console.log(visibleIds.length);
-  setPageIndex(0);
+export const updateVisibleIndices = (indices: number[]) => {
+  visibleIndices = indices;
+  console.log(visibleIndices.length);
 };

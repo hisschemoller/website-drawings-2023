@@ -32,6 +32,7 @@ export function createMapClusters() {
     description: d.description,
     geometry: new Point(fromLonLat([d.longitude, d.latitude])),
     id: d.id,
+    index: d.index,
     srcSmall: d.image_file_small,
     year: d.year,
   }));
