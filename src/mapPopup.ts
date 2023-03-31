@@ -1,6 +1,6 @@
 import { Overlay } from 'ol';
 import { Coordinate } from 'ol/coordinate';
-import { goToSlide } from './slider';
+import { goToSlide, updateSlides } from './slider';
 import { showOverlay } from './overlay';
 
 /**
@@ -22,9 +22,10 @@ closer.addEventListener('click', () => {
 
 content.addEventListener('click', () => {
   const el = content.querySelector('.popup-content') as HTMLElement;
-  if (el.dataset.index) {
+  if (el.dataset.id) {
     showOverlay();
-    goToSlide(parseInt(el.dataset.index));
+    updateSlides();
+    goToSlide(el.dataset.id);
   }
 });
 
@@ -49,11 +50,11 @@ export function closePopup() {
 export function showPopup(
   coordinate: Coordinate,
   description: string,
-  index: number,
+  id: string,
   srcSmall: string,
   year: string,
 ) {
-  content.innerHTML = `<div class="popup-content" data-index="${index}">
+  content.innerHTML = `<div class="popup-content" data-id="${id}">
       <div class="popup-image">
         <img src="images/drawings/${srcSmall}" alt="${description}" />
       </div>

@@ -9,7 +9,6 @@ import { containsXY, createEmpty, extend } from 'ol/extent';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
 import { updateVisibleIds, updateVisibleIndices} from './data';
-import { updateSlides } from './slider';
 
 /**
  * Create the map.
@@ -29,7 +28,6 @@ const map = new Map({
 
 map.on('moveend', () => {
   visibleMarkers();
-  updateSlides();
 });
 
 /**
@@ -46,7 +44,7 @@ map.on('singleclick', function (e) {
       showPopup(
         coordinate,
         markerFeatures[0].get('description'),
-        markerFeatures[0].get('index'),
+        markerFeatures[0].get('id'),
         markerFeatures[0].get('srcSmall'),
         markerFeatures[0].get('year'),
       );

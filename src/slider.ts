@@ -14,29 +14,28 @@ export function setupSlider() {
   splide = new Splide(splideEl).mount();
 }
 
-export function filterSlides() {
-  const indices = getVisibleIndices();
-  splide.Components.Slides.filter((slide: SlideComponent) => !indices.includes(slide.index));
-  console.log('indices', indices);
-  console.log('Slides.getLength', splide.Components.Slides.getLength());
-}
+// export function filterSlides() {
+//   const indices = getVisibleIndices();
+//   splide.Components.Slides.filter((slide: SlideComponent) => !indices.includes(slide.index));
+//   console.log('indices', indices);
+//   console.log('Slides.getLength', splide.Components.Slides.getLength());
+// }
 
 export function updateSlides() {
   const ids = getVisibleIds();
-  console.log('ids', ids);
   const drawings = getDrawings();
-  splide.Components.Slides.remove(() => true);
-  const s = ids.map((id) => {
+  const htmlString = ids.map((id) => {
     const drawing = drawings.find((drawing) => drawing.id === id) as Drawing;
     return `<div class="splide__slide">
         Slide ${drawing.index} ${drawing.description} (${drawing.year})
       </div>`;
   });
-  console.log('s', s);
-  splide.Components.Slides.add(s);
+  splide.Components.Slides.remove(() => true);
+  splide.Components.Slides.add(htmlString);
 }
 
-export function goToSlide(index: number) {
+export function goToSlide(id: string) {
+  const ids = getVisibleIds();
+  const index = ids.findIndex((visibleId) => visibleId === id);
   splide.Components.Controller.go(index);
-  console.log('goToSlide', index);
 }
