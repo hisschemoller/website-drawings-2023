@@ -89,28 +89,42 @@
   display: flex;
 }
 .overlay-close {
-  background-color: #f00;
+  color: #999;
   cursor: pointer;
+  font-size: 28px;
   height: 40px;
+  line-height: 40px;
   position: absolute;
   right: 0;
+  text-align: center;
   top: 0;
   width: 40px;
   z-index: 1;
 }
+.overlay-close:after {
+  content: "✕";
+}
 .overlay .splide {
   width: 100%;
 }
-/* .overlay-box {
-  background-color: #111;
-  margin: 0 auto;
-  max-height: 800px;
-  max-width: 800px;
-} */
 
+.splide__track {
+  height: 80vh;
+}
+.splide__list {
+  align-items: stretch;
+}
 .splide__slide {
-  border: 1px solid #f00;
   color: #fff;
-  display: flex;
-  padding: 30px;
+  padding: 50px 30px;
+  text-align: center;
+}
+.splide__slide > img {
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+.splide__slide > div {
+  margin-top: 20px;
 }
