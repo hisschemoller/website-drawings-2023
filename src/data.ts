@@ -19,9 +19,15 @@ const ENV = 'dev';
 
 let drawings: Drawing[];
 
+let visibleIds: string[];
+
 let visibleIndices: number[];
 
 export const getDrawings = () => drawings;
+
+export const getVisibleIds = () => visibleIds;
+
+export const getVisibleIndices = () => visibleIndices;
 
 export async function loadDrawings() {
   try {
@@ -41,6 +47,10 @@ export async function loadDrawings() {
     console.log('loadDrawings error:', err);
   }
 }
+
+export const updateVisibleIds = (ids: string[]) => {
+  visibleIds = ids;
+};
 
 export const updateVisibleIndices = (indices: number[]) => {
   visibleIndices = indices;

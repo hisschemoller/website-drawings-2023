@@ -1,6 +1,6 @@
 import { Overlay } from 'ol';
 import { Coordinate } from 'ol/coordinate';
-import { goToSlide } from './carousel';
+import { goToSlide } from './slider';
 import { showOverlay } from './overlay';
 
 /**
