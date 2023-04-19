@@ -4,8 +4,7 @@ import './map';
 import { addClusterLayer, addPopupOverlay } from './map';
 import { createMapClusters } from './mapCluster';
 import { setupOverlay } from './overlay';
-
-console.log('Hello world!');
+import { setupCarousel } from './carousel';
 
 (async function setup() {
   await loadDrawings();
@@ -14,4 +13,5 @@ console.log('Hello world!');
   addPopupOverlay();
   setupSlider();
   setupOverlay();
+  setupCarousel();
 })();

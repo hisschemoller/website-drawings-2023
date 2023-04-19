@@ -9,6 +9,7 @@ import { containsXY, createEmpty, extend } from 'ol/extent';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
 import { updateVisibleIds, updateVisibleIndices} from './data';
+import { updateThumbs } from './carousel';
 
 /**
  * Create the map.
@@ -28,6 +29,7 @@ const map = new Map({
 
 map.on('moveend', () => {
   visibleMarkers();
+  updateThumbs();
 });
 
 /**

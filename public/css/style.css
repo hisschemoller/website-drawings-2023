@@ -1,5 +1,5 @@
 .map {
-  height: 100%;
+  height: calc(100vh - 120px);
   left: 0;
   overflow: hidden;
   position: fixed;
@@ -77,7 +77,7 @@
 .overlay {
   background-color: rgba(0, 0, 0, 0.8);
   display: none;
-  height: 100vh;
+  height: calc(100vh - 120px);
   left: 0;
   overflow: hidden;
   position: fixed;
@@ -86,7 +86,7 @@
   z-index: 10;
 }
 .overlay.show {
-  display: flex;
+  display: block;
 }
 .overlay-close {
   color: #999;
@@ -104,22 +104,23 @@
 .overlay-close:after {
   content: "✕";
 }
-.overlay .splide {
+#image-slider {
+  height: calc(100vh - 120px);
   width: 100%;
 }
 
-.splide__track {
-  height: 80vh;
+#image-slider .splide__track {
+  height: 100%;
 }
-.splide__list {
+#image-slider .splide__list {
   align-items: stretch;
 }
-.splide__slide {
+#image-slider .splide__slide {
   color: #fff;
   padding: 50px 30px;
   text-align: center;
 }
-.splide__slide > img {
+#image-slider .splide__slide > img {
   display: block;
   margin: 0 auto;
   max-height: 100%;
@@ -127,4 +128,26 @@
 }
 .splide__slide > div {
   margin-top: 20px;
+}
+
+#thumbnail-carousel {
+  background-color: #000;
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+}
+#thumbnail-carousel .splide__track {
+  margin: 10px;
+}
+#thumbnail-carousel .splide__list {
+}
+#thumbnail-carousel .splide__slide {
+  cursor: pointer;
+  list-style: none;
+  overflow: hidden;
+}
+#thumbnail-carousel .splide__slide img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }

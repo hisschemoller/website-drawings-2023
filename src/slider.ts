@@ -1,8 +1,9 @@
 import Splide from '@splidejs/splide';
 import { Drawing, getDrawings, getVisibleIds, getVisibleIndices } from './data';
 
-const splideEl = document.querySelector('.splide') as HTMLElement;
-const splideList = splideEl.querySelector('.splide__list') as HTMLElement;
+const sliderEl = document.getElementById('image-slider') as HTMLElement;
+const sliderList = sliderEl.querySelector('.splide__list') as HTMLElement;
+// const thumbEl = document.getElementById('thumbs') as HTMLElement;
 let splide: Splide;
 
 function getSlideHtml(drawing: Drawing) {
@@ -12,11 +13,31 @@ function getSlideHtml(drawing: Drawing) {
     </div>`;
 }
 
+// function getThumbHtml(drawing: Drawing, index: number) {
+//   return `<li class="thumb__slide" data-index="${index}">
+//       <img data-splide-lazy="images/drawings/${drawing.image_file_small}" alt="${drawing.description}" data-index="${index}">
+//     </li>`;
+// }
+
 export function setupSlider() {
   const drawings = getDrawings();
+
   const htmlString = drawings.reduce((accumulator, drawing) => (accumulator + getSlideHtml(drawing)), '');
-  splideList.innerHTML = htmlString;
-  splide = new Splide(splideEl, { lazyLoad: 'nearby' }).mount();
+  sliderList.innerHTML = htmlString;
+  splide = new Splide(sliderEl, {
+    lazyLoad: 'nearby',
+    pagination: false,
+  }).mount();
+
+  // const thumbHtmlString = drawings.reduce(
+  //   (accumulator, drawing, index) => (accumulator + getThumbHtml(drawing, index)), '');
+  // thumbEl.innerHTML = thumbHtmlString;
+  // thumbEl.addEventListener('click', (e) => {
+  //   const index = e.target ? (e.target as HTMLElement).dataset.index : 0;
+  //   if (index) {
+  //     splide.go(parseInt(index));
+  //   }
+  // });
 }
 
 export function updateSlides() {
