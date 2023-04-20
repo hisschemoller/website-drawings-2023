@@ -11,6 +11,8 @@ import { Geometry } from 'ol/geom';
 import { updateVisibleIds, updateVisibleIndices} from './data';
 import { updateThumbs } from './carousel';
 
+const PADDING = { padding: [50, 50, 50, 50] };
+
 /**
  * Create the map.
  */
@@ -62,7 +64,7 @@ map.on('singleclick', function (e) {
 
 export function addClusterLayer() {
   map.addLayer(getClusters());
-  map.getView().fit(getSource().getExtent());
+  map.getView().fit(getSource().getExtent(), PADDING);
 }
 
 export function addPopupOverlay() {
@@ -102,7 +104,7 @@ function zoomToCluster(pixel: Pixel) {
         const geometry: (Geometry | undefined) = feat.getGeometry();
         if (geometry) {
           extend(extent, geometry.getExtent());
-          map.getView().fit(extent);
+          map.getView().fit(extent, PADDING);
         }
       });
     }
