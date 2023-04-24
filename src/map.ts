@@ -8,7 +8,7 @@ import { Pixel } from 'ol/pixel';
 import { containsXY, createEmpty, extend } from 'ol/extent';
 import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
-import { updateVisibleIds, updateVisibleIndices} from './data';
+import { updateVisibleIds } from './data';
 import { updateThumbs } from './carousel';
 
 const PADDING = { padding: [50, 50, 50, 50] };
@@ -30,7 +30,7 @@ const map = new Map({
 });
 
 map.on('moveend', () => {
-  visibleMarkers();
+  updateVisibleMarkers();
   updateThumbs();
 });
 
@@ -71,7 +71,7 @@ export function addPopupOverlay() {
   map.addOverlay(getOverlay());
 }
 
-function visibleMarkers() {
+function updateVisibleMarkers() {
   const cluster = getClusters().getSource();
   if (cluster) {
     const mapExtent = map.getView().calculateExtent(map.getSize());
@@ -90,7 +90,7 @@ function visibleMarkers() {
       }
     });
     updateVisibleIds(visibleIds);
-    updateVisibleIndices(visibleIndices);
+    // updateVisibleIndices(visibleIndices);
   }
 }
 

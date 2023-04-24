@@ -21,13 +21,13 @@ let drawings: Drawing[];
 
 let visibleIds: string[];
 
-let visibleIndices: number[];
+let activeSlideIndex: number | undefined;
+
+let activeSlideCallbacks: ((index: number | undefined) => void)[] = [];
 
 export const getDrawings = () => drawings;
 
 export const getVisibleIds = () => visibleIds;
-
-export const getVisibleIndices = () => visibleIndices;
 
 export async function loadDrawings() {
   try {
@@ -52,6 +52,12 @@ export const updateVisibleIds = (ids: string[]) => {
   visibleIds = ids;
 };
 
-export const updateVisibleIndices = (indices: number[]) => {
-  visibleIndices = indices;
-};
+export function subscribe(callback: (index: number | undefined) => void) {
+  activeSlideCallbacks.push(callback)
+}
+
+export function setActiveSlideIndex(index: number | undefined) {
+  activeSlideIndex = index;
+  console.log('setActiveSlideIndex', activeSlideIndex);
+  activeSlideCallbacks.forEach((callback) => callback(index));
+}

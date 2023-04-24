@@ -1,7 +1,6 @@
 import { Overlay } from 'ol';
 import { Coordinate } from 'ol/coordinate';
-import { goToSlide, updateSlides } from './slider';
-import { showOverlay } from './overlay';
+import { updateSlides } from './slider';
 
 /**
  * Elements that make up the popup.
@@ -23,9 +22,8 @@ closer.addEventListener('click', () => {
 content.addEventListener('click', () => {
   const el = content.querySelector('.popup-content') as HTMLElement;
   if (el.dataset.id) {
-    showOverlay();
     updateSlides();
-    goToSlide(el.dataset.id);
+    closePopup();
   }
 });
 
