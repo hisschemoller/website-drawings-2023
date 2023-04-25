@@ -2,21 +2,16 @@ import Splide from '@splidejs/splide';
 import { Drawing, getDrawings, getVisibleIds, setActiveSlideIndex, subscribe } from './data';
 
 const sliderEl = document.getElementById('image-slider') as HTMLElement;
-const sliderList = sliderEl.querySelector('.splide__list') as HTMLElement;
 let splide: Splide;
 
 function getSlideHtml(drawing: Drawing) {
   return `<div class="splide__slide">
       <img data-splide-lazy="images/drawings/${drawing.image_file_large}" alt="${drawing.description}">
-      <div>Slide ${drawing.index} ${drawing.description} (${drawing.year})</div>
+      <div>${drawing.index}. ${drawing.description} (${drawing.year})</div>
     </div>`;
 }
 
 export function setupSlider() {
-  const drawings = getDrawings();
-
-  const htmlString = drawings.reduce((accumulator, drawing) => (accumulator + getSlideHtml(drawing)), '');
-  sliderList.innerHTML = htmlString;
   splide = new Splide(sliderEl, {
     lazyLoad: 'nearby',
     pagination: false,

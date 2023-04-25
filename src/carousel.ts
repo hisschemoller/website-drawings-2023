@@ -2,7 +2,6 @@ import { Splide } from '@splidejs/splide';
 import { Drawing, getDrawings, getVisibleIds, setActiveSlideIndex, subscribe } from './data';
 
 const thumbEl = document.getElementById('thumbnail-carousel') as HTMLElement;
-const thumbList = thumbEl.querySelector('.splide__list') as HTMLElement;
 let splide: Splide;
 
 function getThumbHtml(drawing: Drawing) {
@@ -13,11 +12,6 @@ function getThumbHtml(drawing: Drawing) {
 }
 
 export function setupCarousel() {
-  const drawings = getDrawings();
-
-  const thumbHtmlString = drawings.reduce((str, drawing) => (str + getThumbHtml(drawing)), '');
-  thumbList.innerHTML = thumbHtmlString;
-
   splide = new Splide('#thumbnail-carousel', {
     fixedHeight: 100,
 		fixedWidth: 100,

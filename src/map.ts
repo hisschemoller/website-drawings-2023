@@ -10,6 +10,7 @@ import { Feature } from 'ol';
 import { Geometry } from 'ol/geom';
 import { updateVisibleIds } from './data';
 import { updateThumbs } from './carousel';
+import { updateSlides } from './slider';
 
 const PADDING = { padding: [50, 50, 50, 50] };
 
@@ -31,6 +32,7 @@ const map = new Map({
 
 map.on('moveend', () => {
   updateVisibleMarkers();
+  updateSlides();
   updateThumbs();
 });
 

@@ -144,10 +144,11 @@
 #thumbnail-carousel .splide__slide {
   cursor: pointer;
   list-style: none;
+  opacity: 0.8;
   overflow: hidden;
 }
 #thumbnail-carousel .splide__slide.is-active {
-  border: 2px solid #f00;
+  opacity: 1;
 }
 #thumbnail-carousel .splide__slide img {
   height: 100%;
