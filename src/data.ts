@@ -29,6 +29,8 @@ export const getDrawings = () => drawings;
 
 export const getVisibleIds = () => visibleIds;
 
+export const getActiveSlideIndex = () => activeSlideIndex;
+
 export async function loadDrawings() {
   try {
     // const response = await fetch('http://localhost:8080/api/index.php');

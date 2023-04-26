@@ -95,9 +95,9 @@
   height: 40px;
   line-height: 40px;
   position: absolute;
-  right: 0;
+  right: 10px;
   text-align: center;
-  top: 0;
+  top: 10px;
   width: 40px;
   z-index: 1;
 }
@@ -154,4 +154,14 @@
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+.splide__arrow {
+  background: transparent;
+  height: 4em;
+  width: 4em;
+}
+.splide__arrow svg {
+  fill: #fff;
+  height: 2em;
+  width: 2em;
 }

@@ -1,5 +1,5 @@
 import { Splide } from '@splidejs/splide';
-import { Drawing, getDrawings, getVisibleIds, setActiveSlideIndex, subscribe } from './data';
+import { Drawing, getActiveSlideIndex, getDrawings, getVisibleIds, setActiveSlideIndex, subscribe } from './data';
 
 const thumbEl = document.getElementById('thumbnail-carousel') as HTMLElement;
 let splide: Splide;
@@ -24,7 +24,11 @@ export function setupCarousel() {
 
   splide.on('click', (slide) => setActiveSlideIndex(slide.index));
 
-  splide.on('active', (slide) => setActiveSlideIndex(slide.index));
+  splide.on('active', (slide) => {
+    if (getActiveSlideIndex() !== undefined) {
+      setActiveSlideIndex(slide.index);
+    }
+  });
 
   subscribe(goToThumb);
 }
