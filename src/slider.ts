@@ -13,6 +13,7 @@ function getSlideHtml(drawing: Drawing) {
 
 export function setupSlider() {
   splide = new Splide(sliderEl, {
+    keyboard: 'global',
     lazyLoad: 'nearby',
     pagination: false,
   }).mount();
