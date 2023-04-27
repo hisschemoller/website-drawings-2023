@@ -56,7 +56,7 @@ export function showPopup(
 ) {
   content.innerHTML = `<div class="popup-content" data-id="${id}">
       <div class="popup-image">
-        <img src="images/drawings/${srcSmall}" alt="${description}" />
+        <img src="/images/drawings/${srcSmall}" alt="${description}" />
       </div>
       <span>${description} (${year})</span>
     </div>`;

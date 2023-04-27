@@ -12,3 +12,8 @@ The Website Drawings app rewritten without Vue to avoid problems.
   * https://swiperjs.com/
 * Tiny Slider 2
   * https://github.com/ganlanyuan/tiny-slider
+
+## Deploy as a WordPress plugin
+
+* Add CSS and JS paths, HTML string to drawings-app.php
+* Build bundle.js with ENV = 'prod' in data.ts

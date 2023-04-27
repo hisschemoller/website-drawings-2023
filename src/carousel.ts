@@ -7,7 +7,7 @@ let splide: Splide;
 function getThumbHtml(drawing: Drawing) {
   const { description, id, image_file_small } = drawing;
   return `<li class="splide__slide" data-id="${id}">
-      <img src="images/drawings/${image_file_small}" alt="${description}" data-id="${id}">
+      <img src="/images/drawings/${image_file_small}" alt="${description}" data-id="${id}">
     </li>`;
 }
 

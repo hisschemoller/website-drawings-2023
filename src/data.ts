@@ -15,7 +15,7 @@ export type Drawing = {
   year: string;
 };
 
-const ENV = 'dev';
+const ENV: 'dev' | 'prod' = 'prod';
 
 let drawings: Drawing[];
 
@@ -60,6 +60,5 @@ export function subscribe(callback: (index: number | undefined) => void) {
 
 export function setActiveSlideIndex(index: number | undefined) {
   activeSlideIndex = index;
-  console.log('setActiveSlideIndex', activeSlideIndex);
   activeSlideCallbacks.forEach((callback) => callback(index));
 }

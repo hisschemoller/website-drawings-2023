@@ -6,8 +6,10 @@ let splide: Splide;
 
 function getSlideHtml(drawing: Drawing) {
   return `<div class="splide__slide">
-      <img data-splide-lazy="images/drawings/${drawing.image_file_large}" alt="${drawing.description}">
-      <div>${drawing.description} (${drawing.year})</div>
+      <div class="splide__slide-inner">
+        <img data-splide-lazy="/images/drawings/${drawing.image_file_large}" alt="${drawing.description}">
+        <div>${drawing.description} (${drawing.year})</div>
+      </div>
     </div>`;
 }
 
