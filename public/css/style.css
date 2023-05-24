@@ -180,12 +180,14 @@
   object-fit: cover;
   width: 100%;
 }
-.splide__arrow {
+#image-slider .splide__arrow,
+#thumbnail-carousel .splide__arrow {
   background: transparent;
   height: 4em;
   width: 4em;
 }
-.splide__arrow svg {
+#image-slider .splide__arrow svg,
+#thumbnail-carousel .splide__arrow svg {
   fill: #fff;
   height: 2em;
   width: 2em;
